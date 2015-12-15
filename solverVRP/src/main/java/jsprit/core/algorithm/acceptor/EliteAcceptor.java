@@ -3,7 +3,7 @@ package jsprit.core.algorithm.acceptor;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.commons.math.stat.descriptive.moment.StandardDeviation;
+import org.apache.commons.math.stat.descriptive.moment.Variance;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -100,8 +100,8 @@ public class EliteAcceptor implements SolutionAcceptor, IterationStartsListener 
 		for(VehicleRoutingProblemSolution s : solutions) {
 			results[j++] = s.getCost();
 		}
-		StandardDeviation dev = new StandardDeviation();
-		variance = dev.evaluate(results);
+		Variance var = new Variance();
+		variance = var.evaluate(results);
 		
 		//if variance is too low (and the memory is full), we cut the solutions
 		if(variance < varianceThreshold && solutions.size() == solutionMemory) {

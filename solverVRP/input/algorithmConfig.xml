@@ -17,7 +17,10 @@
 
 			<searchStrategy name="randomRuinAndRecreate">
 				<selector name="selectRandomly"/>
-	  			<acceptor name="greedyAcceptance"/> 
+	  			<acceptor name="eliteAcceptor">
+	  				<threshold>0.2</threshold>
+	  				<elite>2</elite>
+	  			</acceptor> 
 				<modules>
 					<module name="ruin_and_recreate">
 						<ruin name="randomRuin">
